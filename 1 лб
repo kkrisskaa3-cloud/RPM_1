@@ -1,0 +1,19 @@
+eshcere = ['котенок','щенок', 'теленок', 'лисенок','олененок','волченок','цыпленок', 'рыбка','котенок','лисенок','щенок',]
+print(eshcere[-2])
+print(eshcere[4])
+print(eshcere[8])
+eshcere[7] = 'шнеле кринж'
+print(eshcere[7])
+print(eshcere[2:5])
+eshcere.append('загадочно..')
+print(eshcere)
+eshcere.insert(6, 'а полежать нельзя..')
+print(eshcere)
+print(eshcere.count('щенок'))
+print(eshcere.count('теленок'))
+eshcere2 = eshcere.copy()
+eshcere.insert(6, 'пе пе')
+del eshcere[0]
+del eshcere[2]
+print(eshcere)
+print(eshcere2)
