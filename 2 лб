@@ -1,0 +1,111 @@
+Питон:
+
+class drawing:
+    def __init__(self, tassel, pencil, paper, watercolor):
+        self.tassel = tassel
+        self.pencil = pencil
+        self.paper = paper
+        self.watercolor = watercolor
+
+    def info(self):
+        print(f"Кисточка: {self.tassel}")
+        print(f"Карандаш: {self.pencil}")
+        print(f"Бумага: {self.paper}")
+        print(f"Акварель: {self.watercolor}")
+
+class Shop(drawing):
+    def __init__(self, tassel, pencil, paper, watercolor, price, style):
+        super().__init__(tassel, pencil, paper, watercolor)
+      
+        self.price = price
+        self.style = style
+
+    def display_shop_details(self):
+       
+        print(f"Цена товара: {self.price} rub")
+        print(f"Стиль товара: {self.style}")
+
+
+    def calculate(self, quantity):
+       
+        total_cost = self.price * quantity
+        return total_cost
+   
+
+
+art = Shop("thick", "colorfull", "A3", "yes", 500, "good")
+
+print("Детали для рисования:")
+art.info()
+
+print("\nДетали магазина:")
+art.display_shop_details()
+
+print("\n расчет стоимости")
+
+
+desired_quantity = 4
+calculated_total = art.calculate(desired_quantity)
+
+print(f"Стоимость {desired_quantity} ед. товара: {calculated_total:.2f} rub"
+
+
+
+
+
+с#: (НЕ ДОДЕЛАНО)
+
+
+
+using System;
+
+class Drawing
+{
+    public string Tassel { get; set; }
+    public string Pencil { get; set; }
+    public string Paper { get; set; }
+    public string Watercolor { get; set; }
+
+    public Drawing(string tassel, string pencil, string paper, string watercolor) //присваеваем значения
+    {
+        Tassel = tassel;
+        Pencil = pencil;
+        Paper = paper;
+        Watercolor = watercolor;
+    }
+
+    public void Info()
+    {
+        Console.WriteLine($"Кисточка: {Tassel}\nКарандаш: {Pencil}\nБумага: {Paper}\nАкварель: {Watercolor}");
+    }
+}
+
+class Shop : Drawing
+{
+    public string Price { get; set; }
+    public string Style { get; set; }
+
+    public Shop(string tassel, string pencil, string paper, string watercolor, string price, string style) : base(tassel, pencil, paper, watercolor)
+    {
+        Price = price;
+        Style = style;
+    }
+
+   
+    public void InfoFull()
+    {
+        Console.WriteLine($"Цена: {Price}\nСтиль: {Style}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {  
+        Shop art = new Shop("thick", "colorfull", "A3", "yes", "500 rub", "good");
+        art.Info();
+        art.InfoFull();
+
+        
+    }
+}
