@@ -1,0 +1,13 @@
+using System.Diagnostics;
+
+foreach (Process process in Process.GetProcesses())
+{
+    Console.WriteLine($"ID: {process.Id} Name: {process.ProcessName}");
+}
+
+Process[] vsProcs = Process.GetProcessesByName("devenv");
+foreach (var proc in vsProcs)
+    Console.WriteLine($"ID: {proc.Id}");
+
+Process.Start(@"C:\Windows\system32\mspaint.exe");
+Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe");
