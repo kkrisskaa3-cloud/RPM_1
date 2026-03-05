@@ -1,0 +1,55 @@
+using Microsoft.Office.Interop.Excel;
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Application excelApp = new Application();
+
+            if (excelApp == null)
+            {
+                Console.WriteLine("Не установлен");
+                return;
+            }
+            Workbook excelBook = excelApp.Workbooks.Open(@"C:\Users\23_ИП-291к\Desktop\gggg.xlsx");
+            _Worksheet excelSheet = excelBook.Worksheets[1];
+            _Worksheet excelSheeto = excelBook.Worksheets[2];
+
+            Microsoft.Office.Interop.Excel.Range excelRange = excelSheet.UsedRange;
+            Microsoft.Office.Interop.Excel.Range excelRangeo = excelSheeto.UsedRange;
+
+
+            int rows = excelRange.Rows.Count;
+            int cols = excelRange.Columns.Count;
+
+            int rows2 = excelRangeo.Rows.Count;
+            int cols2 = excelRangeo.Columns.Count;
+
+            for (int i = 1; i <= rows; i++)
+            {
+                Console.Write("\r\n");
+                for (int j = 1; j < cols; j++)
+                {
+                    if (excelRange.Cells[i, j] != null && excelRange.Cells[i, j].Value2 != null)
+                        Console.Write(excelRange.Cells[i, j].Value2.ToString() + "\t");
+                }
+            }
+
+            for (int i = 1; i <= rows2; i++)
+            {
+                Console.Write("\r\n");
+                for (int j = 1; j < cols2; j++)
+                {
+                    if (excelRange.Cells[i, j] != null && excelRange.Cells[i, j].Value2 != null)
+                        Console.Write(excelRangeo.Cells[i, j].Value2.ToString() + "\t");
+                }
+            }
+            excelApp.Quit();
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+            Console.ReadLine();
+
+        }
+    }
+}
