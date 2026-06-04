@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+           
+            if (!string.IsNullOrWhiteSpace(txtClipboardContent.Text))
+            {
+                Clipboard.SetText(txtClipboardContent.Text);
+                MessageBox.Show("Текст скопирован в буфер обмена!", "Успех",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Введите текст!", "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnShowClipboard_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtClipboardContent.Text))
+            {
+                string filePath = "clipboard_content.txt";
+                File.WriteAllText(filePath, txtClipboardContent.Text);
+                MessageBox.Show($"Текст сохранен в файл:\n{filePath}", "Успех",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Нет текста для сохранения!", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
+}
